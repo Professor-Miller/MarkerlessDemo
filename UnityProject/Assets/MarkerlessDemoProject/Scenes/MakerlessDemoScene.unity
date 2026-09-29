@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ARPlacementHandler
   raycastManager: {fileID: 2512387470422636671}
   planeManager: {fileID: 2512387470422636670}
-  anchorManager: {fileID: 0}
+  anchorManager: {fileID: 2512387470422636672}
   prefabObject: {fileID: 3097181857960153207, guid: 77aef2b178b0c7c4bb6639073cbcceb3, type: 3}
 --- !u!114 &753721882
 MonoBehaviour:
@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: 2512387470422636642}
   - component: {fileID: 2512387470422636670}
   - component: {fileID: 2512387470422636671}
+  - component: {fileID: 2512387470422636672}
   m_Layer: 0
   m_Name: XR Origin (AR Rig)
   m_TagString: Untagged
@@ -719,6 +720,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_RaycastPrefab: {fileID: 0}
+--- !u!114 &2512387470422636672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512387470422636669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.ARFoundation::UnityEngine.XR.ARFoundation.ARAnchorManager
+  <trackablesChanged>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  m_AnchorPrefab: {fileID: 0}
 --- !u!4 &2512387470860572925
 Transform:
   m_ObjectHideFlags: 0
