@@ -19,25 +19,37 @@ public class ARPlacementHandler : MonoBehaviour
     // Raycast to the screen position and spawn the prefab if a hit is detected
     private void HandleTouch(Vector2 screenPosition)
     {
-        // Make sure we haven't already placed our object.
-        //
-        // Use the player's touch to find a valid location on a detected plane.
-        //
-        // Find the actual AR plane associated with our raycast hit.
-        //
-        // Anchor our selected location to the physical environment.
-        //
-        // Determine which direction the surface is facing.
-        //
-        // Spawn our object at the anchor and orient it to the surface.
-        //
-        // Attach our object to the anchor so it follows the tracked location.
-        //
-        // Placement is finished, so clean up our plane visualization.
+        if (spawnedObject != null) return;
+
+        if (raycastManager.Raycast(screenPosition, hits, TrackableType.PlaneWithinPolygon))
+        {
+            if (hits.Count == 0) return;
+
+            var hit = hits[0];
+
+            var plane = planeManager.GetPlane(hit.trackableId);
+
+            if (plane == null) return;
+
+            var anchor = anchorManager.AttachAnchor(plane, hit.pose);
+
+            if (anchor == null) return;
+
+            spawnedObject = Instantiate(prefabObject, anchor.transform.position, hit.pose.rotation, anchor.transform);
+
+            HidePlanes();
+
+        }
+
     }
 
     private void HidePlanes()
     {
-        // Stop plane detection and hide any planes we've already found.
+        planeManager.enabled = false;
+
+        foreach (var plane in planeManager.trackables)
+        {
+            plane.gameObject.SetActive(false);
+        }
     }
 }
